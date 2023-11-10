@@ -16,4 +16,12 @@ export class TodohttpService {
   getItemById(id: number) {
     return this.httpClient.get<ToDoItem>(`${this.url}+${id}`);
   }
+
+  create(title: string, description: string) {
+    return this.httpClient.post(this.url, {
+      title: title,
+      description: description,
+      isDone: false,
+    });
+  }
 }
