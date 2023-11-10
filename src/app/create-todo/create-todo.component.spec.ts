@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateTodoComponent } from './create-todo.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('CreateTodoComponent', () => {
   let component: CreateTodoComponent;
@@ -8,7 +9,8 @@ describe('CreateTodoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CreateTodoComponent]
+      imports: [ReactiveFormsModule],
+      declarations: [CreateTodoComponent],
     });
     fixture = TestBed.createComponent(CreateTodoComponent);
     component = fixture.componentInstance;
