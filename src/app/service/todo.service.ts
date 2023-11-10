@@ -23,4 +23,18 @@ export class TodoService {
   getAll() {
     return this.items;
   }
+  creatItem(title: string, description: string) {
+    this.items.push({
+      id: this.items.length + 1,
+      title: title,
+      description: description,
+      isDone: false,
+    });
+  }
+  markDone(id: number) {
+    const currentItem = this.items.find((_item) => _item.id === id);
+    if (currentItem) {
+      currentItem.isDone = true;
+    }
+  }
 }
