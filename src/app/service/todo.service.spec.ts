@@ -10,8 +10,8 @@ describe('TodoService', () => {
     service = TestBed.inject(TodoService);
     service.items = [
       {
-        title: 'second',
         id: 1,
+        title: 'second',
         description: 'eat dinner',
         isDone: false,
       },
@@ -32,14 +32,14 @@ describe('TodoService', () => {
 
     expect(service.items).toEqual([
       {
-        title: 'second',
         id: 1,
+        title: 'second',
         description: 'eat dinner',
         isDone: false,
       },
       {
-        title: 'new title',
         id: 2,
+        title: 'new title',
         description: 'new',
         isDone: false,
       },
@@ -52,8 +52,8 @@ describe('TodoService', () => {
     service.markDone(item.id);
     expect(service.items).toEqual([
       {
-        title: 'second',
         id: 1,
+        title: 'second',
         description: 'eat dinner',
         isDone: true,
       },
