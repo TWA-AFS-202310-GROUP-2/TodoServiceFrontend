@@ -33,8 +33,10 @@ export class CreateTodoComponent {
     {
       //this.todoService.create(formValues.title,formValues.description)
       this.todoHttpService.create(formValues.title, 
-        formValues.description).subscribe(()=>{this.todoForm.reset()})
-        this.created.emit()
+        formValues.description).subscribe(()=>{
+          this.todoForm.reset()
+          this.created.emit()})
+      
     }
     //this.todoForm.reset()
   }

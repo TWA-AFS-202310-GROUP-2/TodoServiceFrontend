@@ -40,4 +40,11 @@ export class TodoListComponent {
   {
     this.router.navigateByUrl(`/detail/${id}`)
   }
+
+  onDelete(id: number)
+  {
+    this.todoHttpService.delete(id).subscribe(()=>{
+      this.refreshList()
+    })
+  }
 }
