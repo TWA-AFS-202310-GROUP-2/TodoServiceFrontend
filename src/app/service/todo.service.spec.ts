@@ -63,4 +63,16 @@ describe('TodoService', () => {
         isDone: true,
       }]);
   });
+
+  it('should return an item when getItem', () => {
+    const item = service.getItem(1);
+    expect(item).toEqual(
+      {
+        id: 1,
+        title: 'First Item',
+        description: 'This is the first item',
+        isDone: false,
+      }
+    )
+  });
 });
