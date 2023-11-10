@@ -18,7 +18,7 @@ export class TodoService {
       id: 2,
       title: 'Second Item',
       description: 'This is the second item',
-      isDone: false,
+      isDone: true,
     },
     {
       id: 3,
@@ -30,5 +30,11 @@ export class TodoService {
 
   getAll(): ToDoItem[] {
     return this.items;
+  }
+
+  create(title: string, description: string): void {
+    const id = this.items.length + 1;
+    const item = { id, title, description, isDone: false };
+    this.items.push(item);
   }
 }
