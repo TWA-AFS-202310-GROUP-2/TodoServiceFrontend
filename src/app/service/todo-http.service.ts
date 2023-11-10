@@ -38,4 +38,8 @@ export class TodoHttpService {
       currentItem.isDone = true
     }
   }
+
+  getItemById(id:number){
+    return this.items.find(i=>i.id ===id)
+  }
 }
