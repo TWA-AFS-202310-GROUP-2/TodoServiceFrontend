@@ -28,6 +28,6 @@ export class TodoListComponent {
 
   onGoToDetail(id: number)
   {
-    this.router.navigateByUrl('/detail/${id}')
+    this.router.navigateByUrl(`/detail/${id}`)
   }
 }
