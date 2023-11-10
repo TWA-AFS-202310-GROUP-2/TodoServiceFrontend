@@ -7,6 +7,7 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { CreateTodolistComponent } from './create-todolist/create-todolist.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TododetailComponent } from './tododetail/tododetail.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TododetailComponent } from './tododetail/tododetail.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
