@@ -24,4 +24,8 @@ export class TodohttpService {
       isDone: false,
     });
   }
+
+  delete(id: number) {
+    return this.httpClient.delete(`${this.url}+${id}`);
+  }
 }

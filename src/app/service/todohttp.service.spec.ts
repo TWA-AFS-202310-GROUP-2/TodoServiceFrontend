@@ -38,4 +38,11 @@ describe('TodohttpService', () => {
 
     expect(HttpClientSpy.get.calls.count()).toEqual(1);
   });
+
+  it('should delete todo by id when call delete', () => {
+    HttpClientSpy.delete.and.returnValue(asyncData({}));
+
+    service.delete(0).subscribe();
+    expect(HttpClientSpy.delete.calls.count()).toEqual(1);
+  });
 });
