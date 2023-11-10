@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToDoItem } from 'src/model/ToDoItem';
-import { TodoService } from 'src/app/service/todo.service';
+import { TodoHttpService } from 'src/app/service/todo-http.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,13 +8,22 @@ import { TodoService } from 'src/app/service/todo.service';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent {
-  constructor(private todoService: TodoService) {}
-  ngOnInit() {}
-  items: ToDoItem[] = this.todoService.getAll();
-  onMarkAsDone(id: number): void {
-    this.todoService.markAsDone(id);
+  constructor(private todoService: TodoHttpService) {}
+  ngOnInit() {
+    this.todoService.getAll().subscribe((items) => {
+      this.items = items;
+    });
   }
-  // onMarkAsUndone(id: number): void {
-  //   this.todoService.markAsUndone(id);
-  // }
+  items: ToDoItem[] = [];
+  onMarkAsDone(id: number): void {
+    this.todoService.markAsDone(id).subscribe(
+      () => this.refresh()
+    );
+  }
+
+  refresh(): void {
+    this.todoService.getAll().subscribe((items) => {
+      this.items = items;
+    });
+  }
 }
