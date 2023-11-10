@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TodoListComponent {
   items: ToDoItem[] = [];
-  constructor(private todoService: TodoService,
-    private router:Router) {}
+  constructor(private todoService: TodoService, private router: Router) {}
 
   ngOnInit() {
     this.items = this.todoService.getAll();
@@ -21,7 +20,7 @@ export class TodoListComponent {
     this.todoService.markDone(id);
   }
 
-  onGoToDetail(id:number){
-    this.router.navigateByUrl(`detail/${id}`)
+  onGoToDetail(id: number) {
+    this.router.navigateByUrl(`detail/${id}`);
   }
 }
