@@ -15,6 +15,10 @@
         <td>
             <button (click)="onMarkDone(item.id)" 
             [disabled]="item.isDone">Done</button>
+
+            <button>view detail</button>
         </td>
     </tr>
 </table>
+
+<app-create-todo></app-create-todo>
