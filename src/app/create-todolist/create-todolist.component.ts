@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { TodoHttpService } from '../service/todo-http.service';
 
 @Component({
   selector: 'app-create-todolist',
@@ -7,7 +8,8 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./create-todolist.component.css']
 })
 export class CreateTodolistComponent {
-  constructor(private formBuilder : FormBuilder){}
+  constructor(private formBuilder : FormBuilder,
+              private todoService : TodoHttpService){}
 
   todoForm = this.formBuilder.group({
     title:'',
@@ -16,7 +18,9 @@ export class CreateTodolistComponent {
 
   onSubmit(){
     const formValues  = this.todoForm.value
-
-    console.log(formValues)
+    if (formValues.description && formValues.title){
+      this.todoService.create(formValues.title,formValues.description)
+      this.todoForm.reset()
+    }
   }
 }

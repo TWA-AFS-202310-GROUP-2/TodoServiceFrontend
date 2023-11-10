@@ -9,18 +9,26 @@ export class TodoHttpService {
     {
       id: 1,
       title: 'Good Day',
-      description: 'ggggg',
+      description: 'What a good day',
       isDone: false,
     },
     {
       id: 2,
       title: 'Good Day',
-      description: 'ggggg',
+      description: 'not bad',
       isDone: false,
     },
   ];
   constructor() {}
   getAll() {
     return this.items;
+  }
+  create(title:string, description: string) {
+    this.items.push({
+      id: this.items.length+1,
+      title: title,
+      description: description,
+      isDone: false
+    })
   }
 }
