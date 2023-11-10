@@ -16,6 +16,7 @@
       <button (click)="onMarkAsDone(item.id)" [disabled]="item.isDone">
         Done
       </button>
+      <button [routerLink]="['/todo-detail', item.id]">Detail</button>
     </td>
   </tr>
 </table>
