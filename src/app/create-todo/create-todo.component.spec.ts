@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateTodoComponent } from './create-todo.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CreateTodoComponent', () => {
   let component: CreateTodoComponent;
@@ -8,7 +9,8 @@ describe('CreateTodoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CreateTodoComponent]
+      declarations: [CreateTodoComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     });
     fixture = TestBed.createComponent(CreateTodoComponent);
     component = fixture.componentInstance;
