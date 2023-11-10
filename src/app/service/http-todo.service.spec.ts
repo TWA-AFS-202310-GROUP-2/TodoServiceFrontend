@@ -22,21 +22,20 @@ describe('HttpTodoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it( 'should get all when call getAll', () =>{
-    ///////
-    
-      httpClientSpy.get.and.returnValue(asyncData[
-        {
-          "id": 0,
-          "title": "Home work",
-          "description": "Have to complete home work",
-          "isDone": false
-        }
-      ]))
-      
-      service.getAll().subscribe(data => {
-        expect(data.length).toBe(1)
-      })
-    
-    expect(httpClientSpy.get.calls.count()).toEqual(1)})
+  it( 'should get all when call getAll', () => {
+    httpClientSpy.get.and.returnValue(asyncData([
+      {
+        "id": 0,
+        "title": "Home work",
+        "description": "Have to complete home work",
+        "isDone": false
+      }
+    ]))
+    service.getAll().subscribe(data =>{
+      expect(data.length).toEqual(1)
+    })
+
+    expect(httpClientSpy.get.calls.count()).toEqual(1)
+  })
+
 });

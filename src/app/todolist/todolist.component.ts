@@ -7,28 +7,30 @@ import { HttpTodoService } from '../service/http-todo.service';
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
-  styleUrls: ['./todolist.component.css']
+  styleUrls: ['./todolist.component.css'],
 })
 export class TodolistComponent {
+  items: ToDoItem[] = [];
 
-  items: ToDoItem[] =[]
+  constructor(
+    private httpService: HttpTodoService,
+    private todoHttpService: TodoHttpService,
+    private router: Router
+  ) {}
 
-  constructor(private httpService :HttpTodoService,
-    private todoHttpService :TodoHttpService,
-    private router: Router) {
-
+  ngOnInit() {
+    this.onRefresh();
+  }
+  onRefresh() {
+    this.httpService.getAll().subscribe((todoItems) => {
+      this.items = todoItems;
+    });
   }
   onMarkDone(id: number) {
-    this.todoHttpService.markDone(id)
-  }
-  ngOnInit() {
-    this.httpService.getAll().subscribe(todoItems => {
-      this.items = todoItems
-    })
-
+    this.todoHttpService.markDone(id);
   }
 
-  onGoToDetail(id: number){
-    this.router.navigateByUrl(`/detail/${id}`)
+  onGoToDetail(id: number) {
+    this.router.navigateByUrl(`/detail/${id}`);
   }
 }
