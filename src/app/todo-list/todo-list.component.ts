@@ -11,4 +11,10 @@ export class TodoListComponent {
   constructor(private todoService: TodoService) {}
   ngOnInit() {}
   items: ToDoItem[] = this.todoService.getAll();
+  onMarkAsDone(id: number): void {
+    this.todoService.markAsDone(id);
+  }
+  // onMarkAsUndone(id: number): void {
+  //   this.todoService.markAsUndone(id);
+  // }
 }

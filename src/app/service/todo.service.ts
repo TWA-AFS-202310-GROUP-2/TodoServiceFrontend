@@ -37,4 +37,19 @@ export class TodoService {
     const item = { id, title, description, isDone: false };
     this.items.push(item);
   }
+
+  markAsDone(id: number): void {
+    const item = this.items.find((item) => item.id === id);
+    if (item) {
+      item.isDone = true;
+    }
+  }
+
+  // markAsUndone(id: number): void {
+  //   const item = this.items.find((item) => item.id === id);
+  //   if (item) {
+  //     item.isDone = false;
+  //   }
+  // }
 }
+
