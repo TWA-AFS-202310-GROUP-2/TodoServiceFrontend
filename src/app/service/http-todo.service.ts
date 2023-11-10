@@ -12,4 +12,12 @@ export class HttpTodoService {
   getAll(){
     return this.http.get<ToDoItem[]>("https://localhost:44309/ToDoItems")
   }
-}
+
+  create(title:string,description:string)
+  {
+  return this.http.post("https://localhost:44309/ToDoItems",{
+    title:title,
+    description: description,
+    isDone: false
+  })
+}}
