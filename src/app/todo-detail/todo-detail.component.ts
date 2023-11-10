@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
 import { ToDoItem } from 'src/model/ToDoItem';
+import { TodoService } from 'src/app/service/todo.service';
+import { ActivatedRoute } from '@angular/router';
+import { identifierName } from '@angular/compiler';
 
 @Component({
   selector: 'app-todo-detail',
   templateUrl: './todo-detail.component.html',
-  styleUrls: ['./todo-detail.component.css']
+  styleUrls: ['./todo-detail.component.css'],
 })
 export class TodoDetailComponent {
-  
-    constructor() { }
-  
-    ngOnInit(): void {
-    }
-
-    getTodoDetail:ToDoItem = {
-      id: 1,
-      title: 'First Item',
-      description: 'This is the first item',
-      isDone: false,
-    }; 
-
+  todoItem: ToDoItem | undefined;
+  constructor(
+    private todoService: TodoService,
+    private ActivatedRoute: ActivatedRoute
+  ) {}
+  ngOnInit() {
+    const id = this.ActivatedRoute.snapshot.paramMap.get('id');
+    this.todoItem = this.todoService.getItem(Number(id));
+  }
 }

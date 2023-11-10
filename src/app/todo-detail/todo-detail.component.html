@@ -1,12 +1,11 @@
 <div>
-  <h2>Todo Detail</h2>
-  <div *ngIf="getTodoDetail">
-    <h3>{{ getTodoDetail.title }} details!</h3>
-    <div><label>id: </label>{{ getTodoDetail.id }}</div>
-    <div><label>title: </label>{{ getTodoDetail.title }}</div>
+  <h2>Todo item detail</h2>
+  <div *ngIf="todoItem">
+    <div><label>title: </label>{{ todoItem.title }}</div>
     <div>
       <label>description: </label>
-      {{ getTodoDetail.description }}
+      {{ todoItem.description }}
     </div>
+    <div><label>isDone: </label>{{ todoItem.isDone }}</div>
   </div>
 </div>

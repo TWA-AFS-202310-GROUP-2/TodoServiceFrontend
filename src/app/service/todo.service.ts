@@ -45,6 +45,10 @@ export class TodoService {
     }
   }
 
+  getItem(id: number): ToDoItem | undefined {
+    return this.items.find((item) => item.id === id);
+  }
+
   // markAsUndone(id: number): void {
   //   const item = this.items.find((item) => item.id === id);
   //   if (item) {
