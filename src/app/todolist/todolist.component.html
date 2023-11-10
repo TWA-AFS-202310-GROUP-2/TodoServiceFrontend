@@ -17,6 +17,9 @@
             (click) = "onMarkDone(item.id)"
             [disabled]="item.isDone">
             Done</button>
+            <button 
+            (click) = "onGoToDetail(item.id)">
+            ViewDetail</button>
         </td>
     </tr>
 </table>
