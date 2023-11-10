@@ -33,4 +33,35 @@ describe('TodoHttpService', () => {
       }
     ])
   });
+
+  it('should get all items including new item when create', ()=>{
+    const items = service.create("Tuesday","just so so")
+    expect(service.items).toEqual([
+      {
+        id: 1,
+        title: "monday",
+        description: "bad day",
+        isDone: false,
+      },
+      {
+        id: 2,
+        title: "Tuesday",
+        description: "just so so",
+        isDone: false,
+      }
+    ])
+  });
+
+  it('should get markdone items when markdone', ()=>{
+    const items = service.markDone(1)
+    expect(service.items).toEqual([
+      {
+        id: 1,
+        title: "monday",
+        description: "bad day",
+        isDone: true,
+      }
+    ])
+  });
+
 });
