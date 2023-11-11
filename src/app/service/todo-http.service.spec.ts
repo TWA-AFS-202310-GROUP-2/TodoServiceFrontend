@@ -13,9 +13,8 @@ describe('TodoHttpService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientModule] });
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = TestBed.inject(TodoHttpService);
+    service = new TodoHttpService(httpClientSpy);
   });
 
   it('should be created', () => {

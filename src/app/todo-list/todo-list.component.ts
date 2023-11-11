@@ -24,11 +24,24 @@ export class TodoListComponent {
     });
   }
 
-  onMarkDown(id: number) {
-    this.todoService.markDone(id);
+  onMarkDown(id: number, title: string, description: string) {
+    this.todoHttpService.markDone(id, title, description);
   }
 
   onGoToDetail(id: number) {
     this.router.navigateByUrl(`/detail/${id}`);
+  }
+
+  refreshList() {
+    this.todoHttpService.getAll().subscribe((todoItems) => {
+      this.items = todoItems;
+    });
+  }
+
+  onDelete(id: number) {
+    this.todoHttpService.delete(id).subscribe((todoItems) => {
+      console.log(todoItems);
+      this.refreshList();
+    });
   }
 }

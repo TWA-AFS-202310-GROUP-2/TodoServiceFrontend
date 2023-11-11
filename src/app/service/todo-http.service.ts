@@ -19,4 +19,24 @@ export class TodoHttpService {
       isDone: false,
     });
   }
+
+  delete(id: number) {
+    return this.httpClient.delete('https://localhost:44309/ToDoItem/' + id);
+  }
+
+  markDone(id: number, title: string, description: string) {
+    return this.httpClient.put('https://localhost:44309/ToDoItem/' + id, {
+      title: title,
+      description: description,
+      isDone: true,
+    });
+  }
+
+  edit(id: number, title: string, description: string, isDone: boolean) {
+    return this.httpClient.put('https://localhost:44309/ToDoItem/' + id, {
+      title: title,
+      description: description,
+      isDone: isDone,
+    });
+  }
 }
