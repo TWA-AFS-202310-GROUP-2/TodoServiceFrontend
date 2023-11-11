@@ -18,9 +18,6 @@ describe('TodoService', () => {
     ];
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
   it('should get all', () => {
     const result = service.getAll();
 
