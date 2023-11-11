@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css");
 table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 8px 16px;
   text-align: left;
@@ -18,7 +20,9 @@ form {
   margin: 16px 0;
 }
 
-button + button, input + input, input + button {
+button + button,
+input + input,
+input + button {
   margin-left: 8px;
 }
 
@@ -53,4 +57,8 @@ button:hover {
 
 button:active {
   background-color: #005cbf;
+}
+
+button[disabled] {
+  background-color: gray;
 }
