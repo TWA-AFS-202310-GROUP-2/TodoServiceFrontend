@@ -11,10 +11,40 @@
   <div>
     <label for="title">Title</label>
     <input class="form-control" id="title" formControlName="title" />
+    <div
+      *ngIf="
+        detailForm.get('title')?.hasError('required') &&
+        detailForm.get('title')?.touched
+      "
+      style="color: red"
+    >
+      Title is required
+    </div>
+    <div
+      *ngIf="detailForm.get('title')?.hasError('inputLength')"
+      style="color: red"
+    >
+      Warning: Title must not exceed
+      {{ detailForm.get("title")?.getError("inputLength").maxLength }}
+      characters
+    </div>
   </div>
   <div>
     <label id="desc">Description</label>
     <input class="form-control" id="desc" formControlName="description" />
+    <div
+      *ngIf="
+        detailForm.get('description')?.hasError('required') &&
+        detailForm.get('description')?.touched
+      "
+    >
+      Warning: Description is required
+    </div>
+    <div *ngIf="detailForm.get('description')?.hasError('inputLength')">
+      Description must not exceed
+      {{ detailForm.get("description")?.getError("inputLength").maxLength }}
+      characters
+    </div>
   </div>
-  <button type="submit">save</button>
+  <button type="submit" [disabled]="!detailForm.valid">save</button>
 </form>

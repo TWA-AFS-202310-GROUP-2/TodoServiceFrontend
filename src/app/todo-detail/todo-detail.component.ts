@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToDoItem } from 'src/model/ToDoItem';
 import { TodohttpService } from '../service/todohttp.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-todo-detail',
@@ -25,8 +30,8 @@ export class TodoDetailComponent {
         disabled: true,
       },
     ],
-    title: '',
-    description: '',
+    title: ['', [Validators.required, lengthValidator]],
+    description: ['', [Validators.required, lengthValidator]],
     isDone: [
       {
         value: '',
@@ -59,4 +64,12 @@ export class TodoDetailComponent {
       this.router.navigateByUrl('');
     });
   }
+}
+function lengthValidator(control: AbstractControl) {
+  const maxLength = 100;
+  const value = control.value;
+  if (value && value.length > maxLength) {
+    return { inputLength: { maxLength } };
+  }
+  return null;
 }
