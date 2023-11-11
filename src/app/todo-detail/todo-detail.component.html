@@ -1,10 +1,12 @@
 <br />
 <br />
 <div>Todo Detail</div>
+<br />
 <div *ngIf="item">
   <div>Id: {{ item.id }}</div>
   <div *ngIf="!isEditTitle">
-    Title: {{ item.title }} <button (click)="editTitle()">Edit Title</button>
+    Title: {{ item.title }}
+    <button (click)="editTitle()">Edit Title</button>
   </div>
   <div *ngIf="isEditTitle">
     <form
