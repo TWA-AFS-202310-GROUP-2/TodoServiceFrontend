@@ -27,7 +27,12 @@ export class TodoListComponent {
     });
   }
   onMarkDone(id: number) {
-    this._todoService.markDone(id);
+    //let item: ToDoItem = this.items[id];
+    let item = this.items.find((item) => item.id == id);
+    if (item) {
+      item.isDone = true;
+      this._httpService.update(id, item).subscribe();
+    }
   }
   onGoToDetail(id: number) {
     this.router.navigateByUrl(`detail/${id}`);

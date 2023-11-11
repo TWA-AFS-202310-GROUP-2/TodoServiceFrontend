@@ -26,7 +26,7 @@ export class TodoHttpService {
   }
 
   update(id: number, todoItem: ToDoItem) {
-    return this._httpClient.put(this.ip + id, todoItem).subscribe();
+    return this._httpClient.put(this.ip + id, todoItem);
   }
 
   getItemById(id: number) {

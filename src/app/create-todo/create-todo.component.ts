@@ -12,7 +12,6 @@ export class CreateTodoComponent {
   @Output() Created = new EventEmitter();
   constructor(
     private formBuilder: FormBuilder,
-    private _todoService: TodoService,
     private _httpService: TodoHttpService
   ) {}
   todoForm = this.formBuilder.group({

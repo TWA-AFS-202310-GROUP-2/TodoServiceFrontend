@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToDoItem } from 'src/model/ToDoItem';
 import { TodoService } from '../service/todo.service';
 import { TodoHttpService } from '../service/todo-http.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-detail',
@@ -16,16 +17,36 @@ export class TodoDetailComponent {
     description: '',
     isDone: false,
   };
+
+  todoForm = this.formBuilder.group({
+    title: '',
+    description: '',
+  });
+
   constructor(
     private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder,
     private _service: TodoHttpService
   ) {}
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('detailId');
     console.log(id);
-    this._service
-      .getItemById(Number(id))
-      .subscribe((item) => (this.item = item));
+    this._service.getItemById(Number(id)).subscribe((item) => {
+      this.item = item;
+    });
+  }
+
+  onUpdateSubmit() {
+    const id = this.activatedRoute.snapshot.paramMap.get('detailId');
+    if (id && (this.todoForm.value.description || this.todoForm.value.title)) {
+      if (this.todoForm.value.description) {
+        this.item.description = this.todoForm.value.description;
+      }
+      if (this.todoForm.value.title) {
+        this.item.title = this.todoForm.value.title;
+      }
+      this._service.update(Number(id), this.item).subscribe();
+    }
   }
 }
