@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TodoService } from '../service/todo.service';
 import { ToDoItem } from 'src/model/ToDoItem';
 import { TodohttpService } from '../service/todohttp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -56,7 +55,6 @@ export class TodoDetailComponent {
       description: this.detailForm.value.description!,
       isDone: this.item.isDone,
     };
-    this.detailForm.value;
     this.todoHttp.update(todoUpdate.id, todoUpdate).subscribe(() => {
       this.router.navigateByUrl('');
     });

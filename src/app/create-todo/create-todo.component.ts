@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { TodoService } from '../service/todo.service';
 import { TodohttpService } from '../service/todohttp.service';
 
 @Component({
