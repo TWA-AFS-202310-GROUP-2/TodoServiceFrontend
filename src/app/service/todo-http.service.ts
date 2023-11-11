@@ -39,4 +39,10 @@ export class TodoHttpService {
       isDone: isDone,
     });
   }
+
+  getItemById(id: number) {
+    return this.httpClient.get<ToDoItem>(
+      'https://localhost:44309/ToDoItem/' + id
+    );
+  }
 }
