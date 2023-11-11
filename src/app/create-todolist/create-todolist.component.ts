@@ -32,6 +32,5 @@ export class CreateTodolistComponent {
           this.create.emit();
         });
     }
-    this.create.emit();
   }
 }

@@ -28,7 +28,7 @@ export class TodolistComponent {
   }
 
   onMarkDone(id: number,item:ToDoItem) {
-    this.httpService.markDone(id,item).subscribe((updatedItem) =>this.onRefresh())
+    this.httpService.update(id,item).subscribe((updatedItem) =>this.onRefresh())
   }
 
   OnDelete(id:number){

@@ -14,7 +14,7 @@ export class HttpTodoService {
     return this.http.get<ToDoItem[]>(this.url);
   }
 
-  markDone(id: number, todoItem :ToDoItem) {
+  update(id: number, todoItem :ToDoItem) {
     const urlWithId =`${this.url}/${id}`;
     return this.http.put<ToDoItem>(urlWithId,todoItem);
   }
