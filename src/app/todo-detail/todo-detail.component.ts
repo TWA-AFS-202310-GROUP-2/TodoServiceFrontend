@@ -33,4 +33,18 @@ export class TodoDetailComponent {
       })
     })
   }
+
+  OnSave()
+  {
+    const formValues = this.todoForm.value
+    if (formValues.title && formValues.description && this.item)
+    this.todoHttpService.updateItem(
+      {
+        id: this.item.id,
+        title: formValues.title,
+        description: formValues.description,
+        isDone: this.item.isDone
+      }
+    ).subscribe()
+  }
 }

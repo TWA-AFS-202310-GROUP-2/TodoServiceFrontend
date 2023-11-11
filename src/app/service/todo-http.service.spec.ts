@@ -38,4 +38,20 @@ describe('TodoHttpService', () => {
     expect (httpClientSpy.get.calls.count()).toEqual(1)
   })
 
+  it('Should create an item when call create',() => {
+
+  })
+
+  it('Should delete an item when call delete', () => {
+
+  })
+
+  it('Should get a specific item when call getItemById', () => {
+
+  })
+
+  it('Should update a specific item when call updateItem', () => {
+    
+  })
+
 });
