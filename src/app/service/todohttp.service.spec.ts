@@ -96,4 +96,20 @@ describe('TodohttpService', () => {
 
     expect(HttpClientSpy.post.calls.count()).toEqual(1);
   });
+  it('should mark todo as done when call markDone', () => {
+    const todoUpdate: ToDoItem = {
+      id: 0,
+      title: 'Home work 00',
+      description: 'Have to complete home work',
+      isDone: true,
+    };
+    HttpClientSpy.put.and.returnValue(asyncData(todoUpdate));
+
+    todoUpdate.isDone = false;
+    service.markDone(todoUpdate).subscribe((data) => {
+      expect(data).toEqual(todoUpdate);
+    });
+
+    expect(HttpClientSpy.put.calls.count()).toEqual(1);
+  });
 });

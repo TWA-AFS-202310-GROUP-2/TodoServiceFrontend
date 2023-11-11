@@ -28,8 +28,8 @@ export class TodoListComponent {
     });
   }
 
-  onDone(id: number) {
-    this.todoService.markDone(id);
+  onDone(item: ToDoItem) {
+    this.todoHttp.markDone(item).subscribe();
   }
 
   onGoToDetail(id: number) {

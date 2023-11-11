@@ -32,4 +32,9 @@ export class TodohttpService {
   update(id: number, todoItem: ToDoItem) {
     return this.httpClient.put(`${this.url}+${id}`, todoItem);
   }
+
+  markDone(todoItem: ToDoItem) {
+    todoItem.isDone = true;
+    return this.httpClient.put(`${this.url}+${todoItem.id}`, todoItem);
+  }
 }
