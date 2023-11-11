@@ -1,0 +1,34 @@
+<br />
+<br />
+<div>Todo Detail</div>
+<br />
+<div *ngIf="item">
+  <div>Id: {{ item.id }}</div>
+  <div *ngIf="!isEditTitle">
+    Title: {{ item.title }}
+    <button (click)="editTitle()">Edit Title</button>
+  </div>
+  <div *ngIf="isEditTitle">
+    <form
+      [formGroup]="titleForm"
+      (ngSubmit)="onSubmitTitle(item.id, item.description, item.isDone)"
+    >
+      <input formControlName="title" />
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <div *ngIf="!isEditDescription">
+    Description: {{ item.description }}
+    <button (click)="editDescription()">Edit Description</button>
+  </div>
+  <div *ngIf="isEditDescription">
+    <form
+      [formGroup]="descriptionForm"
+      (ngSubmit)="onSubmitDescription(item.id, item.title, item.isDone)"
+    >
+      <input formControlName="description" />
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <div>IsDone: {{ item.isDone }}</div>
+</div>
