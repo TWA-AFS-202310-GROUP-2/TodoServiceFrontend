@@ -17,7 +17,7 @@ export class TodoHttpService {
 
   create(title: string, description: string)
   {
-    return this.httpClient.post('https://localhost:44309/ToDoItem', {
+    return this.httpClient.post<ToDoItem>('https://localhost:44309/ToDoItem', {
       title: title,
       description: description,
       isDone: false
@@ -27,17 +27,17 @@ export class TodoHttpService {
 
   delete(id: number)
   {
-    return this.httpClient.delete(`https://localhost:44309/ToDoItem/${id}`)
+    return this.httpClient.delete<ToDoItem>(`https://localhost:44309/ToDoItem/${id}`)
   }
 
-  // markDone(id: number)
-  // {
-  //   const currentItems = this.getAll().subscribe(() => {
-
-  //   })
-  // }
   getItemById(id: number)
   {
-    return this.httpClient.get(`https://localhost:44309/ToDoItem/${id}`)
+    return this.httpClient.get<ToDoItem>(`https://localhost:44309/ToDoItem/${id}`)
+  }
+
+  updateItem(toDoItem: ToDoItem)
+  {
+    return this.httpClient.put<ToDoItem>(`https://localhost:44309/ToDoItem/${toDoItem.id}`, 
+    toDoItem)
   }
 }

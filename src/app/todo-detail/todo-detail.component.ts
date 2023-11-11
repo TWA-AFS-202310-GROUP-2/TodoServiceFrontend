@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToDoItem } from 'src/model/ToDoItem';
-import { TodoService } from '../service/todo.service';
+import { TodoHttpService } from '../service/todo-http.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-detail',
@@ -12,11 +13,24 @@ export class TodoDetailComponent {
   item: ToDoItem | undefined
   constructor(
     private activatedRouter: ActivatedRoute,
-    private todoService: TodoService){}
-ngOnInit()
-{
-  const id = this.activatedRouter.snapshot.paramMap.get('detailId')
-  console.log(id)
-  this.item = this.todoService.getItemById(Number(id))
-}
+    private todoHttpService: TodoHttpService,
+    private formBuilder: FormBuilder){}
+  
+  todoForm = this.formBuilder.group(
+  {
+    title: '',
+    description: ''
+  })
+  
+  ngOnInit()
+  {
+    const id = this.activatedRouter.snapshot.paramMap.get('detailId')
+    this.todoHttpService.getItemById(Number(id)).subscribe((item)=>{
+      this.item = item
+      this.todoForm.setValue({
+        title: item.title,
+        description: item.description
+      })
+    })
+  }
 }

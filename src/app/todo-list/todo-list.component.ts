@@ -36,7 +36,9 @@ export class TodoListComponent {
     if (item)
     {
       item.isDone = true
+      this.todoHttpService.updateItem(item).subscribe(_=>_.id === id)
     }
+    
   }
 
   onGoToDetail(id: number)
