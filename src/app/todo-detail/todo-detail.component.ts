@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from '../service/todo.service';
 import { ToDoItem } from 'src/model/ToDoItem';
 import { TodohttpService } from '../service/todohttp.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-detail',
@@ -12,17 +13,52 @@ import { TodohttpService } from '../service/todohttp.service';
 export class TodoDetailComponent {
   constructor(
     private routes: ActivatedRoute,
-    private todoService: TodoService,
-    private todoHttp: TodohttpService
+    private todoHttp: TodohttpService,
+    private formGroup: FormBuilder,
+    private router: Router
   ) {}
 
-  item: ToDoItem | undefined;
+  item!: ToDoItem;
+  detailForm = this.formGroup.group({
+    id: [
+      {
+        value: '',
+        disabled: true,
+      },
+    ],
+    title: '',
+    description: '',
+    isDone: [
+      {
+        value: '',
+        disabled: true,
+      },
+    ],
+  });
 
   ngOnInit() {
     const id = this.routes.snapshot.paramMap.get('todoId');
-    // this.item = this.todoService.getItemById(Number(id));
-    this.todoHttp.getItemById(Number(id)).subscribe((data) => {
-      this.item = data;
+    this.todoHttp.getItemById(Number(id)).subscribe((todo) => {
+      this.item = todo;
+      this.detailForm.setValue({
+        id: `${this.item.id}`,
+        title: this.item.title,
+        description: this.item.description,
+        isDone: `${this.item.isDone}`,
+      });
+    });
+  }
+
+  onSubmit() {
+    const todoUpdate: ToDoItem = {
+      id: this.item.id,
+      title: this.detailForm.value.title!,
+      description: this.detailForm.value.description!,
+      isDone: this.item.isDone,
+    };
+    this.detailForm.value;
+    this.todoHttp.update(todoUpdate.id, todoUpdate).subscribe(() => {
+      this.router.navigateByUrl('');
     });
   }
 }

@@ -28,4 +28,8 @@ export class TodohttpService {
   delete(id: number) {
     return this.httpClient.delete(`${this.url}+${id}`);
   }
+
+  update(id: number, todoItem: ToDoItem) {
+    return this.httpClient.put(`${this.url}+${id}`, todoItem);
+  }
 }
