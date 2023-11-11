@@ -29,7 +29,7 @@ export class HttpTodoService {
 
   getItemById(id:number){
     const urlWithId =`${this.url}/${id}`;
-    return this.http.get(urlWithId)
+    return this.http.get<ToDoItem>(urlWithId)
   }
 
   deleteItem(id: number) {
