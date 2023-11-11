@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from "@angular/common/http"
+import { HttpClient } from '@angular/common/http';
 import { ToDoItem } from 'src/model/ToDoItem';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpTodoService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getAll(){
-    return this.http.get<ToDoItem[]>("https://localhost:44309/ToDoItems")
+  url = 'https://localhost:44309/ToDoItems';
+  getAll() {
+    return this.http.get<ToDoItem[]>(this.url);
   }
 
-  create(title:string,description:string)
-  {
-  return this.http.post("https://localhost:44309/ToDoItems",{
-    title:title,
-    description: description,
-    isDone: false
-  })
-}}
+  markDone(id: number, todoItem :ToDoItem) {
+    const urlWithId =`${this.url}/${id}`;
+    return this.http.put<ToDoItem>(urlWithId,todoItem);
+  }
+
+  create(title: string, description: string) {
+    return this.http.post('https://localhost:44309/ToDoItems', {
+      title: title,
+      description: description,
+      isDone: false,
+    });
+  }
+
+  getItemById(id:number){
+    const urlWithId =`${this.url}/${id}`;
+    return this.http.get(urlWithId)
+  }
+}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToDoItem } from 'src/model/ToDoItem';
-import { TodoHttpService } from '../service/todo.service';
+import { TodoService } from '../service/todo.service';
 import { Route, Router } from '@angular/router';
 import { HttpTodoService } from '../service/http-todo.service';
 
@@ -14,7 +14,7 @@ export class TodolistComponent {
 
   constructor(
     private httpService: HttpTodoService,
-    private todoHttpService: TodoHttpService,
+    private todoService: TodoService,
     private router: Router
   ) {}
 
@@ -26,8 +26,9 @@ export class TodolistComponent {
       this.items = todoItems;
     });
   }
-  onMarkDone(id: number) {
-    this.todoHttpService.markDone(id);
+
+  onMarkDone(id: number,item:ToDoItem) {
+    this.httpService.markDone(id,item).subscribe((updatedItem) =>this.onRefresh())
   }
 
   onGoToDetail(id: number) {
