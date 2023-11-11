@@ -25,7 +25,12 @@ export class TodoListComponent {
   }
 
   onMarkDown(id: number, title: string, description: string) {
-    this.todoHttpService.markDone(id, title, description);
+    this.todoHttpService
+      .markDone(id, title, description)
+      .subscribe((todoItems) => {
+        console.log(todoItems);
+        this.refreshList();
+      });
   }
 
   onGoToDetail(id: number) {
