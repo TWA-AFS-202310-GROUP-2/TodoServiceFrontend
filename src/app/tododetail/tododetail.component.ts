@@ -1,10 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToDoItem } from 'src/model/ToDoItem';
-import { TodoService } from '../service/todo.service';
 import { HttpTodoService } from '../service/http-todo.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-tododetail',
@@ -18,7 +16,6 @@ export class TododetailComponent {
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private todoService: TodoService,
     private httpService: HttpTodoService
   ) {}
 
@@ -39,7 +36,6 @@ export class TododetailComponent {
       isDone: [this.item?.isDone],
     });
   }
-  
 
   onSubmit() {
     if (this.todoDetailForm.valid && this.item) {
@@ -49,5 +45,4 @@ export class TododetailComponent {
       });
     }
   }
-  
 }

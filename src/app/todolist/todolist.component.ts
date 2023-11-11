@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ToDoItem } from 'src/model/ToDoItem';
-import { TodoService } from '../service/todo.service';
 import { Route, Router } from '@angular/router';
 import { HttpTodoService } from '../service/http-todo.service';
 
@@ -12,11 +11,7 @@ import { HttpTodoService } from '../service/http-todo.service';
 export class TodolistComponent {
   items: ToDoItem[] = [];
 
-  constructor(
-    private httpService: HttpTodoService,
-    private todoService: TodoService,
-    private router: Router
-  ) {}
+  constructor(private httpService: HttpTodoService, private router: Router) {}
 
   ngOnInit() {
     this.onRefresh();
@@ -27,16 +22,19 @@ export class TodolistComponent {
     });
   }
 
-  onMarkDone(id: number,item:ToDoItem) {
-    this.httpService.update(id,item).subscribe((updatedItem) =>this.onRefresh())
+  onMarkDone(id: number, item: ToDoItem) {
+    this.httpService
+      .update(id, item)
+      .subscribe((updatedItem) => this.onRefresh());
   }
 
-  OnDelete(id:number){
-    this.httpService.deleteItem(id).subscribe((deletedItem)=>this.onRefresh())
+  OnDelete(id: number) {
+    this.httpService
+      .deleteItem(id)
+      .subscribe((deletedItem) => this.onRefresh());
   }
 
   onGoToDetail(id: number) {
     this.router.navigateByUrl(`/detail/${id}`);
   }
-
 }
