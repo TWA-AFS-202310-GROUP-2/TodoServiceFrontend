@@ -92,9 +92,9 @@ describe('TodoHttpService', () => {
       }
     httpClientSpy.put.and.returnValue(asyncData(item))
     service.updateItem(item).subscribe((updatedItem)=>{
-      
-      //expect(updatedItem).toEqual()
+      expect(updatedItem).toEqual(item)
     })
+    expect(httpClientSpy.put.calls.count()).toEqual(1)
   });
 
 });
