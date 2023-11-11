@@ -31,7 +31,12 @@ export class TodolistComponent {
     this.httpService.markDone(id,item).subscribe((updatedItem) =>this.onRefresh())
   }
 
+  OnDelete(id:number){
+    this.httpService.deleteItem(id).subscribe((deletedItem)=>this.onRefresh())
+  }
+
   onGoToDetail(id: number) {
     this.router.navigateByUrl(`/detail/${id}`);
   }
+
 }

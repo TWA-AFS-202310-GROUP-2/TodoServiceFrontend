@@ -6,6 +6,7 @@ import { ToDoItem } from 'src/model/ToDoItem';
   providedIn: 'root',
 })
 export class HttpTodoService {
+
   constructor(private http: HttpClient) {}
 
   url = 'https://localhost:44309/ToDoItems';
@@ -29,5 +30,10 @@ export class HttpTodoService {
   getItemById(id:number){
     const urlWithId =`${this.url}/${id}`;
     return this.http.get(urlWithId)
+  }
+
+  deleteItem(id: number) {
+    const urlWithId =`${this.url}/${id}`;
+    return this.http.delete(urlWithId)
   }
 }
