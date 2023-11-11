@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { find } from 'rxjs';
 import { ToDoItem } from 'src/model/ToDoItem';
 
 @Injectable({
@@ -29,12 +30,14 @@ export class TodoHttpService {
     return this.httpClient.delete(`https://localhost:44309/ToDoItem/${id}`)
   }
 
-  markDone(id: number)
+  // markDone(id: number)
+  // {
+  //   const currentItems = this.getAll().subscribe(() => {
+
+  //   })
+  // }
+  getItemById(id: number)
   {
-    const currentItem = this.items.find(item => item.id === id)
-    if (currentItem)
-    {
-      currentItem.isDone = true
-    }
+    return this.httpClient.get(`https://localhost:44309/ToDoItem/${id}`)
   }
 }

@@ -13,7 +13,6 @@ export class TodoListComponent {
   items: ToDoItem[]=[]
 
   constructor(
-    private todoService: TodoService,
     private todoHttpService: TodoHttpService,
     private router: Router
   ){}
@@ -33,7 +32,11 @@ export class TodoListComponent {
 
   onMarkDone(id: number)
   {
-    this.todoService.markDone(id);
+    let item = this.items.find(_ => _.id === id)
+    if (item)
+    {
+      item.isDone = true
+    }
   }
 
   onGoToDetail(id: number)
