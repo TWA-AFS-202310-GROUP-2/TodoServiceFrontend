@@ -1,8 +1,15 @@
 
 <h2>ToDo Detail</h2>
 <div *ngIf="item">
-    <div>Id: &nbsp; {{item.id}}</div>
-    <div>Title: &nbsp; {{item.title}}</div>
-    <div>Description: &nbsp; {{item.description}}</div>
-    <div>IsDone: &nbsp; {{item.isDone}}</div>
+    <form [formGroup]="todoForm" (ngSubmit)="onSave()">
+        <div>Id: &nbsp; {{item.id}}</div>
+        <br>
+        <div>Title: &nbsp; <input formControlName="title" type="text"></div>
+        <br>
+        <div>Description: &nbsp; <input formControlName="description" type="text"></div>
+        <br>
+        <div>IsDone: &nbsp; {{item.isDone}}</div>
+        <br>
+        <button type="submit">Save</button>
+    </form>
 </div>

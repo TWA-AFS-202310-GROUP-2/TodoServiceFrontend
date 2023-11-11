@@ -34,17 +34,21 @@ export class TodoDetailComponent {
     })
   }
 
-  OnSave()
+  onSave()
   {
     const formValues = this.todoForm.value
     if (formValues.title && formValues.description && this.item)
-    this.todoHttpService.updateItem(
+    {
+      this.todoHttpService.updateItem(
       {
         id: this.item.id,
         title: formValues.title,
         description: formValues.description,
         isDone: this.item.isDone
       }
-    ).subscribe()
+      ).subscribe()
+      this.todoForm.controls['title'].disable();
+      this.todoForm.controls['description'].disable();
+    }
   }
 }
