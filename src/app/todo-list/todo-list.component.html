@@ -17,6 +17,7 @@
         Done
       </button>
       <button [routerLink]="['/todo-detail', item.id]">Detail</button>
+      <button (click)="onDelete(item.id)">Delete</button>
     </td>
   </tr>
 </table>

@@ -21,6 +21,12 @@ export class TodoListComponent {
     );
   }
 
+  onDelete(id: number): void {
+    this.todoService.deleteItem(id).subscribe(
+      () => this.refresh()
+    );
+  }
+
   refresh(): void {
     this.todoService.getAll().subscribe((items) => {
       this.items = items;

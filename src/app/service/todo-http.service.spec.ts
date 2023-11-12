@@ -65,4 +65,12 @@ describe('TodoHttpService', () => {
       expect(apiService.getItemById).toHaveBeenCalledWith(testItem.id.toString());
     });
   });
+
+  it('should delete an item', () => {
+    (apiService.deleteItem as jasmine.Spy).and.returnValue(of());
+
+    service.deleteItem(1).subscribe(() => {
+      expect(apiService.deleteItem).toHaveBeenCalledWith('1');
+    });
+  });
 });
