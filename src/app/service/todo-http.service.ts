@@ -27,4 +27,12 @@ export class TodoHttpService {
   getItem(id: number): Observable<ToDoItem> {
     return this.apiService.getItemById(id.toString());
   }
+
+  deleteItem(id: number): Observable<void> {
+    return this.apiService.deleteItem(id.toString());
+  }
+
+  updateItem(item: ToDoItem): Observable<ToDoItem> {
+    return this.apiService.updateItem(item.id.toString(), item);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { ToDoItem } from 'src/model/ToDoItem';
 import { ActivatedRoute } from '@angular/router';
 import { identifierName } from '@angular/compiler';
@@ -20,5 +20,12 @@ export class TodoDetailComponent {
     this.todoService.getItem(Number(id)).subscribe((item) => {
       this.todoItem = item;
     });
+  }
+
+  updateTodoItem(): void {
+    if (this.todoItem) {
+      this.todoService.updateItem(this.todoItem).subscribe(
+      );
+    }
   }
 }

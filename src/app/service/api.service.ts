@@ -8,7 +8,7 @@ import { ToDoItem } from 'src/model/ToDoItem';
 })
 export class ApiService {
 
-  private apiUrl = 'https://localhost:44309/ToDoItems';
+  public apiUrl = 'https://localhost:44309/ToDoItems';
 
   constructor(private http: HttpClient) { }
 
