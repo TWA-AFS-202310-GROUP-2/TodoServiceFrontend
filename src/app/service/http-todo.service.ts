@@ -20,7 +20,7 @@ export class HttpTodoService {
   }
 
   create(title: string, description: string) {
-    return this.http.post('https://localhost:44309/ToDoItems', {
+    return this.http.post<ToDoItem>('https://localhost:44309/ToDoItems', {
       title: title,
       description: description,
       isDone: false,
