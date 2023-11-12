@@ -1,0 +1,19 @@
+<div>
+    <h2>Todo item detail</h2>
+    <div *ngIf="todoItem">
+      <div>
+        <label for="title">title:</label>
+        <input id="title" [(ngModel)]="todoItem.title" />
+      </div>
+      <div>
+        <label for="description">description:</label>
+        <input id="description" [(ngModel)]="todoItem.description" />
+      </div>
+      <div>
+        <label for="isDone">isDone:</label>
+        <input type="checkbox" id="isDone" [(ngModel)]="todoItem.isDone" />
+      </div>
+      <button (click)="updateTodoItem()">Save changes</button>
+    </div>
+  </div>
+  
