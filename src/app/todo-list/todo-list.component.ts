@@ -29,6 +29,11 @@ export class TodoListComponent {
       this._httpService.update(id, item).subscribe();
     }
   }
+
+  onRemove(id: number) {
+    this._httpService.delete(id).subscribe();
+  }
+
   onGoToDetail(id: number) {
     this.router.navigateByUrl(`detail/${id}`);
   }
