@@ -22,7 +22,7 @@ export class TodoHttpService {
   }
 
   delete(id: number) {
-    return this._httpClient.delete(this.ip + id);
+    return this._httpClient.delete<ToDoItem>(this.ip + id);
   }
 
   update(id: number, todoItem: ToDoItem) {

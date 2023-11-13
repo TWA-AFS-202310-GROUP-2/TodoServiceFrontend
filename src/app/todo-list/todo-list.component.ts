@@ -21,6 +21,7 @@ export class TodoListComponent {
       this.items = it;
     });
   }
+
   onMarkDone(id: number) {
     //let item: ToDoItem = this.items[id];
     let item = this.items.find((item) => item.id == id);
@@ -31,7 +32,7 @@ export class TodoListComponent {
   }
 
   onRemove(id: number) {
-    this._httpService.delete(id).subscribe();
+    this._httpService.delete(id).subscribe(() => this.onRefreshList());
   }
 
   onGoToDetail(id: number) {
